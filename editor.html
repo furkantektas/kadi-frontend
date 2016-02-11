@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <span class="glyphicon glyphicon-flash orange" aria-hidden="true"></span> KADI
+                    </a>
+                    <!-- <a class="navbar-brand" href="#">Kadı</a> -->
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">LW #01</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html">Assignments</a></li>
+                        <li><a href="grades.html">Grades</a></li>
+                        <li><a href="#">Can Doğa <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+        </nav>
+
+        <div class="editor-heading">
+            <h1>LW #01 <small> Part 1</small></h1>
+            <div>
+                <button type="button" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-floppy-open" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="editor-container">
+            <a href="#" class="editor-overlay" onclick="toggleEditorTheme()"><span class="glyphicon glyphicon-adjust"><span></a>
+            <pre id="editor">
+int main(int argc, char** argv){
+    if(argc != 2) {
+        usage();
+        return 1;
+    }
+
+
+    VideoCapture cap(argv[1]);
+    if(!cap.isOpened()) {
+        cap.release();
+        cerr << "Unable to open video file"endl;
+        return 1;
+    }
+
+    return 0;
+}
+            </pre>
+        </div>
+        <div class="footer-buttons">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-success disabled">
+                    <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-success">
+                    <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery-1.11.3.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/editor/ace.js"></script>
+    <script src="assets/js/editor/ext-beautify.js"></script>
+    <script src="assets/js/editor/ext-textarea.js"></script>
+    <script src="assets/js/editor/mode-c_cpp.js"></script>
+    <script src="assets/js/editor/theme-merbivore_soft.js"></script>
+    <script src="assets/js/editor/theme-textmate.js"></script>
+    <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/merbivore_soft");
+        editor.session.setMode("ace/mode/c_cpp");
+        editor.setOption('firstLineNumber', 5);
+        var isDarkTheme = true;
+        function toggleEditorTheme() {
+            isDarkTheme = !isDarkTheme;
+            editor.setTheme("ace/theme/"+(isDarkTheme ? "merbivore_soft" : "textmate"));
+            var newClass, oldClass;
+
+            if(isDarkTheme) {
+                newClass = 'dark';
+                oldClass = 'bright';
+            } else {
+                newClass = 'bright';
+                oldClass = 'dark';
+            }
+            $('.editor-overlay').removeClass(oldClass).addClass(newClass);
+        }
+    </script>
+</body>
+</html>

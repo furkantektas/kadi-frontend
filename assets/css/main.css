@@ -1,0 +1,60 @@
+.orange {
+    color: #FF9800;
+}
+
+#editor {
+    min-height: 600px;
+    min-width: 100%;
+    padding: 0;
+    margin: 0;
+    z-index: 99;
+}
+
+.editor-container {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.editor-overlay {
+    position: absolute;
+    right: 35px;
+    top: 9px;
+    z-index: 100;
+}
+
+a.editor-overlay,
+a.editor-overlay.dark {
+    color: #fff;
+}
+
+a.editor-overlay.bright {
+    color: #333;
+}
+
+.error-output {
+    overflow-x: scroll;
+    word-wrap: normal;
+}
+
+.editor-heading {
+    display: flex;
+    align-items: center;
+}
+
+.editor-heading h1 {
+    flex: 0 0 85%;
+}
+
+.editor-heading div {
+    text-align: right;
+    width: 100%;
+}
+
+.editor-heading button {
+    flex: 0 0 10%;
+}
+
+.footer-buttons {
+    margin-bottom: 30px;
+    text-align: right;
+}
